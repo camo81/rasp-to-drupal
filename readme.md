@@ -22,6 +22,3 @@ https://www.drupal.org/project/views
 
 Questi dati possono poi essere utilizzati in una qualsiasi vista drupal e (volendo) mostrati tramite google charts o highcharts (utilizzabili tramite gli appositi moduli di Drupal)
 
-# Bunus pack #
-
-Nella cartella startup sono presenti 2 script per gestire un sensore di rilevamento fiamma e uno 
