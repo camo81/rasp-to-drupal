@@ -17,6 +17,13 @@ function stazione_meteo_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'tempDht' => array(
+        'description' => 'valore temperatura dht',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),      
     ),
     'primary key' => array('idUmidita'),
   );

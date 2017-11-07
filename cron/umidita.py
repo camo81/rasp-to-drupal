@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 # Copyright (c) 2014 Adafruit Industries
 # Author: Tony DiCola
 
@@ -20,30 +21,45 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import sys
-import Adafruit_DHT
+#import Adafruit_DHT
 import MySQLdb
+import yaml
 
-# Try to grab a sensor reading.  Use the read_retry method which will retry up
-# to 15 times to get a sensor reading (waiting 2 seconds between each retry).
-humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 27)
+def db_config():
+
+    with open("config.yaml", 'r') as ymlfile:
+        cfg = yaml.load(ymlfile)
+    global user
+    user = cfg['dbconfig']['user']
+    global password
+    password = cfg['dbconfig']['password']
+    global db_name
+    db_name = cfg['dbconfig']['dbname']
+    global db_host
+    db_host = cfg['dbconfig']['dbhost']
+
+
+#uncomment per leggerei dati reali. Commentare poi le due linee sottostanti
+#humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 27)
 
 # Un-comment the line below to convert the temperature to Fahrenheit.
 # temperature = temperature * 9/5.0 + 32
 
-# Note that sometimes you won't get a reading and
-# the results will be null (because Linux can't
-# guarantee the timing of calls to read the sensor).  
-# If this happens try again!
+#commenta per avere dati reali
+humidity = 30
+temperature = 30
+
 if humidity is not None and temperature is not None:
-	#print 'Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity)
+
 	humidity = round(humidity,2)
 	temperature = round(temperature,2)
-	#print rand
 
-	# Open database connection
-	db = MySQLdb.connect("localhost","stazioneMeteo","ySLQNYC9PZ3646UR","stazione_meteo" )
 
-	# prepare a cursor object using cursor() method
+	#insert in db 
+	db_config()
+
+	# Connetto al DB
+	db = MySQLdb.connect(db_host,user,password,db_name )
 	cursor = db.cursor()
 	
 	#SQL query to INSERT a record into the table FACTRESTTBL.

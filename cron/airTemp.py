@@ -3,17 +3,24 @@ import os
 import time
 import MySQLdb
 import random
+import yaml
 
+def db_config():
 
-#----------------------------------------------------------------
-#	Note:
-#		ds18b20's data pin must be connected to pin7.
-#----------------------------------------------------------------
+    with open("config.yaml", 'r') as ymlfile:
+        cfg = yaml.load(ymlfile)
+    global user
+    user = cfg['dbconfig']['user']
+    global password
+    password = cfg['dbconfig']['password']
+    global db_name
+    db_name = cfg['dbconfig']['dbname']
+    global db_host
+    db_host = cfg['dbconfig']['dbhost']
 
-# Reads temperature from sensor and prints to stdout
-# id is the id of the sensor
 
 def readSensor(id):
+	
 	tfile = open("/sys/bus/w1/devices/"+id+"/w1_slave")
 	text = tfile.read()
 	tfile.close()
@@ -21,15 +28,16 @@ def readSensor(id):
 	temperaturedata = secondline.split(" ")[9]
 	temperature = float(temperaturedata[2:])
 	temperature = temperature / 1000
-
+	
 
 	temperature = round(temperature,2)
 	#print rand
 
-	# Open database connection
-	db = MySQLdb.connect("localhost","stazioneMeteo","ySLQNYC9PZ3646UR","stazione_meteo" )
+	#insert in db 
+	db_config()
 
-	# prepare a cursor object using cursor() method
+	# Connetto al DB
+	db = MySQLdb.connect(db_host,user,password,db_name )
 	cursor = db.cursor()
 	
 	#SQL query to INSERT a record into the table FACTRESTTBL.
@@ -41,9 +49,6 @@ def readSensor(id):
 
 	# disconnect from server
 	db.close()
-
-
-
 
 
 
