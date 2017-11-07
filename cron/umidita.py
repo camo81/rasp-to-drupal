@@ -21,6 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import sys
+#uncomment per avere dati reali
 #import Adafruit_DHT
 import MySQLdb
 import yaml
