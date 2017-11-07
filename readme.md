@@ -12,7 +12,7 @@ Nel file config.yaml sono presenti i parametri di configurazione del database su
 i 3 script si occupano di reperire info dal sistema (temperatura e utilizzo cpu), temperatura dell'aria (necessario collegare un sensore al raspberry rispettando il numero del pin presente nello script)
 , umidità dell'aria (tramite sensore dht11, anche in questo caso è necessario rispettare il numero dei pin GPIO utilizzati o, in alternativa, modificare lo script).
 
-Se non si hanno a disposizione sensori esterni è possibile utilizzare il solo script per la CPU che aggiornerà la corrispondente tabella mySQL (stazionemeteo_cpuusage e stazionemeteo_cputemp)
+Se non si hanno a disposizione sensori esterni è possibile utilizzare il solo script per la CPU che aggiornerà la corrispondente tabella mySQL (stazionemeteo_cpuusage e stazionemeteo_cputemp) create automaticamente dall'installazione del modulo drupal.
 
 
 ## modulo Drupal ##
