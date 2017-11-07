@@ -1,0 +1,89 @@
+<?php
+
+function stazione_meteo_schema() {
+  $schema ['stazionemeteo_umidita'] = array(
+    'description' => 'Table per umidità',
+    'fields' => array(
+      'idUmidita' => array(
+        'description' => 'primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'valore' => array(
+        'description' => 'valore umidità',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('idUmidita'),
+  );
+
+
+  $schema ['stazionemeteo_cputemp'] = array(
+    'description' => 'Table per temperatura cpu',
+    'fields' => array(
+      'idCpuTemp' => array(
+        'description' => 'primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'valore' => array(
+        'description' => 'valore temp cpu',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('idCpuTemp'),
+  );
+
+
+  $schema ['stazionemeteo_cpuusage'] = array(
+    'description' => 'Table per utilizzo cpu',
+    'fields' => array(
+      'idCpuUsage' => array(
+        'description' => 'primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'valore' => array(
+        'description' => 'valore utilizzo cpu',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('idCpuUsage'),
+  );  
+
+
+  $schema ['stazionemeteo_temperatura'] = array(
+    'description' => 'Table per temperatura',
+    'fields' => array(
+      'idTemp' => array(
+        'description' => 'primary key.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'valore' => array(
+        'description' => 'valore temperatura',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('idTemp'),
+  );  
+
+
+  return $schema;
+}

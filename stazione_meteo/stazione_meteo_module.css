@@ -1,0 +1,5 @@
+div.charts-google, div.view-temperatura{
+
+	height: 300px !important;
+	border: 1px solid red;
+}

@@ -1,0 +1,45 @@
+<?php
+
+/*
+ * @file
+ * Copyright 2013 Consortech
+*/
+
+
+require_once("stazione_meteo_views.inc");
+
+
+function stazione_meteo_permission(){
+  return array(
+    'stazioneMeteoMain' => array(
+      'title' => t('Modulo stazione meteo'),
+      'description' => t('gestione della stazione meteo'),
+    ),
+
+  );
+
+}
+
+
+function stazione_meteo_menu(){	
+  $items = array();
+
+
+
+  $items['meteo'] = array(
+    'title' =>t('Main page meteo'),
+    'page callback' => 'stazione_meteo_main',
+    'access arguments' => array('stazioneMeteoMain'),
+    'expanded' => TRUE,
+    );
+
+  return $items;
+}
+
+
+function stazione_meteo_main(){
+
+  $output = "Testo di esempio";
+
+  return $output;
+}

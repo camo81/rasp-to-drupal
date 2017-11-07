@@ -1,0 +1,5 @@
+dbconfig:
+  user: root
+  password: HdwrMph
+  dbhost: 172.16.100.224
+  dbname: arizzia

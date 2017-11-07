@@ -1,0 +1,6 @@
+name = Modulo stazione meteo
+description = Modulo stazione meteo
+core = 7.x
+dependencies[] = views
+stylesheets[all][] = stazioneMeteo_module.css
+
